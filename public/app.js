@@ -3,11 +3,11 @@ angular.module('app',['ngRoute'])
     function ($routeProvider) {
         $routeProvider.
             when('/list', {
-                templateUrl: 'public/views/shoppingList.html',
+                templateUrl: 'views/shoppingList.html',
                 controller: 'listCtrl as list'
             }).
             when('/more', {
-                templateUrl: 'public/views/more.html'
+                templateUrl: 'views/more.html'
             }).
             otherwise({
                 redirectTo: '/list'
