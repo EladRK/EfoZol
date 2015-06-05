@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="public/bower_components/angular/angular.js"></script>
+    <script src="public/bower_components/angular-route/angular-route.js"></script>
+    <script src="public/app.js"></script>
+    <script src="public/controllers/shoppingList.js"></script>
+
+    <link rel="stylesheet" href="public/bower_components/bootswatch-dist/css/bootstrap.css" />
+
+    <script src=""></script>
+</head>
+
+<body ng-app="app">
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="#/list">Shopping List</a></li>
+                <li><a href="#/more">More</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div ng-view></div>
+
+
+</div>
+</body>
+</html>
