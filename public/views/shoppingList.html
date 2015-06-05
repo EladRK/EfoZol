@@ -1,3 +1,14 @@
 <div>
-    Shopping Lost
+    Shopping List
+</div>
+
+
+<input type="text" ng-model="newProductName" />
+
+{{newProductName}}
+
+<div ng-repeat="product in products">
+
+     {{product.name}}
+     - {{product.price}}
 </div>

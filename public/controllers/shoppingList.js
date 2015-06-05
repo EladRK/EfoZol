@@ -1,5 +1,13 @@
 angular.module('app').controller('listCtrl',listCtrl);
 
-function listCtrl() {
-    this.list = ['milk','honey','bread'];
+function listCtrl($scope, $http) {
+    
+    $http.get('/productList').
+        success(function(data, status, headers, config) {
+          $scope.products = data;
+        }).
+        error(function(data, status, headers, config) {
+          // log error
+        });
+    
 }
