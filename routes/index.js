@@ -7,7 +7,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/productList', function(req, res, next) {
-
+  // res.json({ a: 1 });
+  
   res.json(
     [
       {name: 'milk', price: 5.5, store: '1' },
