@@ -6,18 +6,35 @@
 
   <div class='row'>
     <div class='col-md-6'>
+      <div ng-repeat="b in branches">
+        {{b.name}}
+        {{b.totalPrice}}
+        </div>
       
-      <proximitymap></proximitymap>
+      
+      
+<map zoom="14" style="height:500px;" center="[32.0853000,34.7817680]"  
+	dragging-cursor="move" + tilt="45"
+	 map-type-id="TERRAIN">
+	 
+<marker ng-repeat="b in branches" position="{{b.pos}}" on-click="showInfoWindow(event, 'marker-info')"></marker>
+
+        <info-window id="marker-info">
+          <h4>Hi!</h4>
+        </info-window>
+
+	 
+	 <!--<info-window id="1" position="32.0853000,34.7817680" visible="true">
+          <div ng-non-bindable="">
+			  <br />
+תל אביב, ישראל 
+          </div>
+        </info-window>-->
+
+	 </map>
+	 
     
   </div>
-  <!--<div class='col-md-3'>
-    <div style='border: solid 1px #ccc; margin:10px; padding:10px; width:200px; height:200px; overflow-y:scroll;'>
-      <div ng-repeat="product in productsFull">
-        {{product.name}}
-      </div>        
-    </div>
-    
-  </div> -->
   <div class='col-md-6'>
     <input type="text" ng-model="newName" ng-keyup="getProducts(newName)" class='input-block-level'/>
 

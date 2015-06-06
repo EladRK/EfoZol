@@ -6,14 +6,7 @@ angular.module("app").directive("proximitymap", function() {
 			title: "@"
 		},
 		controller: function($scope, $http){
-			$scope.zoom = 11;
-	
-	// $scope.branches = [
-	// 	{pos: [32.0771929, 34.7870064], name:"elad"},
-	// 	{pos: [32.0898466, 34.7799683], name:"elad"},
-	// 	{pos: [32.0738474, 34.7703552], name:"elad"}
-	// ];
-	
+		
 	
 	  $scope.getBranches = function(){
       

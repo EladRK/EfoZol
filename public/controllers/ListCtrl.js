@@ -55,4 +55,18 @@ function ListCtrl($scope, $http) {
       });
     }
   };
+  
+  $scope.getBranches = function(){
+      
+    $http.get('/branches').
+      then(function(res) {
+          $scope.branches = res.data;
+      })["catch"](function(err){
+        alert("Error making request", err);
+        console.log(err);
+      });
+  };
+  
+  $scope.getBranches();				
+
 }
