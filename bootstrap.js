@@ -26,12 +26,24 @@ function Item(name){
         prices: prices
     }
 }
+
+
+
 var items = [
-    Item("חומוס"),
-    Item("חמאה"),
-    Item("חלב"),
-    Item("לחם"),
-    Item("גבינה")
+  Item("חלב" ),
+  Item("גבינה" ),
+  Item("תפוזים" ),
+  Item("ענבים" ),
+  Item("בננות" ),
+  Item("חומוס" ),
+  Item("קוטג'" ),
+  Item("לחמניות" ),
+  Item("לחם אחיד" ),
+  Item("לחם אורגני" ),
+  Item("ביצים" ),
+  Item("ביצים אורגניות"),
+  Item("ביצי כפר" ),
+  Item("ביצי חופש" )
   ].map(function(item){
     return new Product({
       name: item.name,
