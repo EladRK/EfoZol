@@ -13,9 +13,9 @@ var Product = mongoose.model('Product', schema);
 
 
 var items = [
-    {"name" : "milk", "price" : 11},
-    {"name" : "butter", "price" : 5},
-    {"name" : "bread", "price" : 4.4},
+    {"name" : "חומוס", "price" : 11},
+    {"name" : "חמאה", "price" : 5},
+    {"name" : "לחם", "price" : 4.4},
     {"name" : "חלב" , "price" : 3.5},
     {"name" : "גבינה", "price": 4.0}].map(function(item){
         return new Product({
