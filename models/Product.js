@@ -1,10 +1,18 @@
 var Promise = require("bluebird");
 var mongoose = Promise.promisifyAll(require('mongoose'));
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 
-var schema = new mongoose.Schema({ 
+var BranchPriceSchema = new mongoose.Schema({
+	price: Number,
+	bid: ObjectId
+})
+
+var ProductSchema = new mongoose.Schema({ 
     name: String,
-    price: Number
+    prices: [BranchPriceSchema]
 });
 
-module.exports = mongoose.model('Product', schema);
+var products = mongoose.model('Product', ProductSchema);
+
+module.exports = products;

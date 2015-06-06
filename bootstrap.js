@@ -4,33 +4,49 @@ var mongoose = Promise.promisifyAll(require('mongoose'));
 
 mongoose.connect('mongodb://localhost:27017/efozol1');
 
-var schema = new mongoose.Schema({ 
-    name: String,
-    price: Number
-});
+var Product = require("./models/Product.js");
 
-var Product = mongoose.model('Product', schema);
+var ObjectId = mongoose.Types.ObjectId;
 
+var bids = [];
+for(var i = 0; i < 5; i++){
+    bids[i] = ObjectId();
+}
 
+function Item(name){
+    var prices = [];
+    for(var i = 0; i < 5; i++){
+        prices[i] = {
+            price: i + 10,
+            bid: bids[i]
+        };
+    }
+    return {
+        "name" : name,
+        prices: prices
+    }
+}
 var items = [
-    {"name" : "חומוס", "price" : 11},
-    {"name" : "חמאה", "price" : 5},
-    {"name" : "לחם", "price" : 4.4},
-    {"name" : "חלב" , "price" : 3.5},
-    {"name" : "גבינה", "price": 4.0}].map(function(item){
-        return new Product({
-            name: item.name,
-            price: item.price
-        });
-     });
+    Item("חומוס"),
+    Item("חמאה"),
+    Item("חלב"),
+    Item("לחם"),
+    Item("גבינה")
+  ].map(function(item){
+    return new Product({
+      name: item.name,
+      prices: item.prices
+    });
+  });
 
 Promise.try(function(){
-    return Product.removeAsync({});
+  return Product.removeAsync({});
 }).then(function(){
-    return Promise.map(items, function(item){
-        return item.saveAsync();
-    });
+  return Promise.map(items, function(item){
+    console.log("HI", item);
+    return item.saveAsync();
+  });
 }).then(function(){
-    console.log("Done!");
-    process.exit();
+  console.log("Done!");
+  process.exit();
 });
