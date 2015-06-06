@@ -15,7 +15,7 @@ router.get('/products/:name', function(req, res, next) {
   var regex = new RegExp('.*'+search+'.*');
 
   Product.find({name: regex}, {}).then(function(docs){
-  	res.json(docs);
+    res.json(docs);
   });
   
 });
