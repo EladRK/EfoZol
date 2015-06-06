@@ -25,16 +25,15 @@ function ListCtrl($scope, $http) {
     lastSearch = p;
   };
   
-  $scope.addProduct = function (product) {
+  $scope.addProduct = function (productName) {
+  
     var p = $scope.products.filter(function(prod){
-      return product.name === prod.name;
+      return productName === prod.name;
     })[0];
 
     if(p == null){
       p = {
-        name: product.name,
-        price: product.price,
-        _id: product._id,
+        name: productName,
         quantity: 1
       };
       $scope.products.push(p);

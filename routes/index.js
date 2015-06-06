@@ -12,7 +12,7 @@ router.get('/products/:name', function(req, res, next) {
   var search = req.params.name;
   var regex = new RegExp('.*'+search+'.*');
 
-  Product.find({name: regex}, {}).then(function(docs){
+  Product.distinct('name', {name: regex}).then(function(docs){
     res.json(docs);
   });
   

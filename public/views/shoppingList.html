@@ -42,12 +42,12 @@
     <div>
       <div ng-repeat="product in search">
         <a ng-click="addProduct(product)" style='cursor:pointer;'>
-          {{product.name}}
+          {{product}}
         </a>
       </div>
     </div>
     <table class="table table-striped">
-      <tr ng-repeat="product in products track by product._id">
+      <tr ng-repeat="product in products track by product.name">
         <td>
           <button ng-click='incQuantity(product)'>+</button>
           {{product.quantity}}
