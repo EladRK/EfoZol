@@ -66,6 +66,10 @@ function ListCtrl($scope, $http) {
       });
   };
   
-  $scope.getBranches();				
+    $scope.showResults = function()
+  {
+  $scope.getBranches();   
+  }
+ 				
 
 }

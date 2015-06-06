@@ -6,12 +6,14 @@
 
   <div class='row'>
     <div class='col-md-6'>
+            <input type='button' value='איפה הכי זול?' ng-click="showResults()" >
+
       <div ng-repeat="b in branches">
         {{b.name}}
         {{b.totalPrice}}
         </div>
       
-      
+
       
 <map zoom="14" style="height:500px;" center="[32.0853000,34.7817680]"  
 	dragging-cursor="move" + tilt="45"
