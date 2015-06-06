@@ -1,4 +1,4 @@
-angular.module('app').controller('listCtrl',listCtrl);
+angular.module('app').controller('ListCtrl',ListCtrl);
 
 function ListCtrl($scope, $http) {
 
