@@ -11,4 +11,7 @@
  - Run `node bootstrap.js` (fills up data in Mongo)
  - Run `npm start` - starts the server
 
+The code is now running the server at `http://localhost:3000`
+Frontend stuff is at `./public`
+
 The project runs AngularJS on the MEAN stack. 
