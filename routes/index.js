@@ -9,9 +9,7 @@ mongoose.connect('mongodb://localhost:27017/efozol1');
 
 router.get('/products/:name', function(req, res, next) {
 
-  
   var search = req.params.name;
-
   var regex = new RegExp('.*'+search+'.*');
 
   Product.find({name: regex}, {}).then(function(docs){
