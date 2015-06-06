@@ -4,7 +4,7 @@ angular.module('app',['ngRoute', 'ngMap'])
         $routeProvider.
             when('/list', {
                 templateUrl: 'views/shoppingList.html',
-                controller: 'listCtrl as list'
+                controller: 'ListCtrl as list'
             }).
             when('/more', {
                 templateUrl: 'views/more.html'

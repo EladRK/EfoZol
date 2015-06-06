@@ -1,26 +1,26 @@
 angular.module('app').controller('listCtrl',listCtrl);
 
-function listCtrl($scope, $http) {
+function ListCtrl($scope, $http) {
 
-$scope.newName = "";
-$scope.productsFull = [];
+  $scope.newName = "";
+  $scope.productsFull = [];
 
-function getProducts(name)
-{
-  if (name === '') {
-    $scope.products = [];
-    return;
+  function getProducts(name)
+  {
+    if (name === '') {
+      $scope.products = [];
+      return;
+    }
+    
+      $http.get('/products/' + name).
+          success(function(data, status, headers, config) {
+            $scope.products = data;
+          }).
+          error(function(data, status, headers, config) {
+            // log error
+          });
+    
   }
-  
-    $http.get('/products/' + name).
-        success(function(data, status, headers, config) {
-          $scope.products = data;
-        }).
-        error(function(data, status, headers, config) {
-          // log error
-        });
-  
-}
 
   $scope.$watch("newName", function(newValue, oldValue) {
    
@@ -33,5 +33,4 @@ function getProducts(name)
     $scope.productsFull.push(productName);
   }
   
-    
 }
