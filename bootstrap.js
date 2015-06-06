@@ -18,40 +18,40 @@ function Item(name){
     for(var i = 0; i < 5; i++){
         prices[i] = {
             price: i + 10,
-            bid: bids[i]
+            bid: bids[i],
+            name: name
         };
     }
-    return {
-        "name" : name,
-        prices: prices
-    }
+    return prices;
 }
 
 
 
 var items = [
-  Item("חלב" ),
-  Item("גבינה" ),
-  Item("תפוזים" ),
-  Item("ענבים" ),
-  Item("בננות" ),
-  Item("חומוס" ),
-  Item("קוטג'" ),
-  Item("לחמניות" ),
-  Item("לחם אחיד" ),
-  Item("לחם אורגני" ),
-  Item("ביצים" ),
-  Item("ביצים אורגניות"),
-  Item("ביצי כפר" ),
-  Item("ביצי חופש" )
-  ].map(function(item){
+      Item("חלב" ),
+      Item("גבינה" ),
+      Item("תפוזים" ),
+      Item("ענבים" ),
+      Item("בננות" ),
+      Item("חומוס" ),
+      Item("קוטג'" ),
+      Item("לחמניות" ),
+      Item("לחם אחיד" ),
+      Item("לחם אורגני" ),
+      Item("ביצים" ),
+      Item("ביצים אורגניות"),
+      Item("ביצי כפר" ),
+      Item("ביצי חופש" )
+  ].reduce(function(prev, cur) {
+    return prev.concat(cur);
+  }, []).map(function(item){
     return new Product({
       name: item.name,
-      prices: item.prices
+      price: item.price
     });
   });
 
-Promise.try(function(){
+Promise.try(function() {
   return Product.removeAsync({});
 }).then(function(){
   return Promise.map(items, function(item){
