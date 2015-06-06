@@ -1,32 +1,49 @@
 
+
 <div style='direction:rtl; margin:20px;' >
 
 
 
 	<div class='row'>
-		<div class='col-md-6'>1</div>
-		<div class='col-md-3'>
-			<div style='border: solid 1px #ccc; margin:10px; padding:10px; width:200px; height:200px; overflow-y:scroll;'>
-				<div ng-repeat="product in productsFull">
-					{{product.name}}
-					</div>                
-            </div>
-            			
-		</div>
-		<div class='col-md-3'>
-			<input type="text" ng-model="newName" />
-
-			{{newProductName}}
-			<div style='border: solid 1px #ccc; margin:10px; padding:10px; width:200px; height:200px; overflow-y:scroll;'>
-				<div ng-repeat="product in products">
-					<a ng-click="addProduct(product)" style='cursor:pointer;'>
-						{{product.name}}
-					</a>
-				</div>
-			</div>
+		<div class='col-md-6'>
 			
-		</div>
+			<map zoom="11" 
+			center="[40.74, -74.18]" 
+			disable-default-u-i="true"
+			disable-double-click-zoom="true"
+			draggable="false"
+			draggable-cursor="help"
+			dragging-cursor="move"
+			keyboard-shortcuts="false"
+			max-zoom="12"
+			min-zoom="8"
+			tilt="45"
+			map-type-id="TERRAIN">
+		</map>
+		
 	</div>
+	<div class='col-md-3'>
+		<div style='border: solid 1px #ccc; margin:10px; padding:10px; width:200px; height:200px; overflow-y:scroll;'>
+			<div ng-repeat="product in productsFull">
+				{{product.name}}
+			</div>                
+		</div>
+		
+	</div>
+	<div class='col-md-3'>
+		<input type="text" ng-model="newName" />
+
+		{{newProductName}}
+		<div style='border: solid 1px #ccc; margin:10px; padding:10px; width:200px; height:200px; overflow-y:scroll;'>
+			<div ng-repeat="product in products">
+				<a ng-click="addProduct(product)" style='cursor:pointer;'>
+					{{product.name}}
+				</a>
+			</div>
+		</div>
+		
+	</div>
+</div>
 
 
 
