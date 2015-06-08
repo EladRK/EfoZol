@@ -7,6 +7,7 @@
 
  - Clone this repository
  - Install MongoDB 
+ - Start MongoDB
  - Run `npm install`
  - Run `node bootstrap.js` (fills up data in Mongo)
  - Run `npm start` - starts the server
