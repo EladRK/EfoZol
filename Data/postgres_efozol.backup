@@ -1,0 +1,213 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.4.3
+-- Dumped by pg_dump version 9.4.3
+-- Started on 2015-06-08 19:08:03
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 176 (class 3079 OID 11855)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2022 (class 0 OID 0)
+-- Dependencies: 176
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 174 (class 1259 OID 16436)
+-- Name: Branches; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Branches" (
+    "Id" integer NOT NULL,
+    "Name" character varying(100),
+    "StoreId" integer
+);
+
+
+ALTER TABLE "Branches" OWNER TO postgres;
+
+--
+-- TOC entry 175 (class 1259 OID 16441)
+-- Name: ProductPrices; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "ProductPrices" (
+    "ProductId" integer NOT NULL,
+    "BranchId" integer NOT NULL,
+    "Price" money
+);
+
+
+ALTER TABLE "ProductPrices" OWNER TO postgres;
+
+--
+-- TOC entry 172 (class 1259 OID 16426)
+-- Name: Products; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Products" (
+    "Id" integer NOT NULL,
+    "Name" character varying(100)
+);
+
+
+ALTER TABLE "Products" OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 16431)
+-- Name: Stores; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Stores" (
+    "Id" integer NOT NULL,
+    "Name" character varying(100)
+);
+
+
+ALTER TABLE "Stores" OWNER TO postgres;
+
+--
+-- TOC entry 2013 (class 0 OID 16436)
+-- Dependencies: 174
+-- Data for Name: Branches; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "Branches" ("Id", "Name", "StoreId") FROM stdin;
+\.
+
+
+--
+-- TOC entry 2014 (class 0 OID 16441)
+-- Dependencies: 175
+-- Data for Name: ProductPrices; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "ProductPrices" ("ProductId", "BranchId", "Price") FROM stdin;
+\.
+
+
+--
+-- TOC entry 2011 (class 0 OID 16426)
+-- Dependencies: 172
+-- Data for Name: Products; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "Products" ("Id", "Name") FROM stdin;
+\.
+
+
+--
+-- TOC entry 2012 (class 0 OID 16431)
+-- Dependencies: 173
+-- Data for Name: Stores; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY "Stores" ("Id", "Name") FROM stdin;
+\.
+
+
+--
+-- TOC entry 1896 (class 2606 OID 16440)
+-- Name: Branches_PK; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Branches"
+    ADD CONSTRAINT "Branches_PK" PRIMARY KEY ("Id");
+
+
+--
+-- TOC entry 1898 (class 2606 OID 16445)
+-- Name: ProductPrices_PK; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "ProductPrices"
+    ADD CONSTRAINT "ProductPrices_PK" PRIMARY KEY ("ProductId", "BranchId");
+
+
+--
+-- TOC entry 1892 (class 2606 OID 16430)
+-- Name: Products_PK; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Products"
+    ADD CONSTRAINT "Products_PK" PRIMARY KEY ("Id");
+
+
+--
+-- TOC entry 1894 (class 2606 OID 16435)
+-- Name: Stores_PK; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Stores"
+    ADD CONSTRAINT "Stores_PK" PRIMARY KEY ("Id");
+
+
+--
+-- TOC entry 1899 (class 2606 OID 16446)
+-- Name: Branches_StoreId_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "Branches"
+    ADD CONSTRAINT "Branches_StoreId_FK" FOREIGN KEY ("StoreId") REFERENCES "Stores"("Id");
+
+
+--
+-- TOC entry 1901 (class 2606 OID 16456)
+-- Name: ProductPrices_BranchId_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "ProductPrices"
+    ADD CONSTRAINT "ProductPrices_BranchId_FK" FOREIGN KEY ("BranchId") REFERENCES "Branches"("Id");
+
+
+--
+-- TOC entry 1900 (class 2606 OID 16451)
+-- Name: ProductPrices_ProductId_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY "ProductPrices"
+    ADD CONSTRAINT "ProductPrices_ProductId_FK" FOREIGN KEY ("ProductId") REFERENCES "Products"("Id");
+
+
+--
+-- TOC entry 2021 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2015-06-08 19:08:03
+
+--
+-- PostgreSQL database dump complete
+--
+
