@@ -3,11 +3,13 @@
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/EladRK/EfoZol?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
-## working on the project
 
- - Clone this repository
+
+## App Web Server
+
  - Install MongoDB 
  - Start MongoDB
+ - Run `cd app_web_server`
  - Run `npm install`
  - Run `node bootstrap.js` (fills up data in Mongo)
  - Run `npm start` - starts the server
