@@ -4,6 +4,19 @@
 
 ### note: this readme in not up to date.
 
+Open Grocery - Making Retailers Prices Accessible
+Open Grocery will make retailers produce prices accessible and available to the public. The project’s first goal is to create a tool that allows each user to compare the cost of their personal shopping bag with all big retailers, including the ability to filter based on geo-location. This way, we can all easily know where to do our shopping.
+As a second goal, and after collecting the data over time, we wish to publish some analysis of the Israeli market. For instance, we believe we could supply information on topics such as increase or decrease in the price of produce for the manufacturer, identifying food cartels and price fixing, analyzing the food cost with accordance with living area, predicting price changes for certain holidays (Passover, Shavuot, Independence Day etc.) and agricultural events.
+Our work will include the following:
+Downloading the XML files of each major retailer.
+Reading the information through Python and parsing each file into a unified format.
+Uploading the information to a DB
+Identifying identical products with different retailers.
+Creating an application (web, Android and iOS) that has access to the info on the DB, through which users can create and compare a shopping bag and locate the nearest store. 
+
+This repository holds the entire EfoZol (Open Grocerty)
+
+
 ### Scraping Server
 ### Raw Data Server
 ### App Web Server
