@@ -4,8 +4,9 @@
 
 ### note: this readme in not up to date.
 
-
-## App Web Server
+### Scraping Server
+### Raw Data Server
+### App Web Server
 
  - Install MongoDB 
  - Start MongoDB
