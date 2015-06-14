@@ -21,15 +21,17 @@ This repository holds the entire Open Grocerty (codenamed EfoZol) project. It in
 1. Scraping Server
  1. Scrapes the XMLs from all the different servers.
  2. Nomalize data
- 3. Insert data to WebServer through API.
-2. App Web Server
+ 3. Insert data to Raw Data Server through API that Raw Data Server will expose.
+2. Raw Data Server
  1. Exposes API to insert Raw Data. (in the future it will allow small retailers to insert their data as well)
  2. Insert Data to the PostgreSql database
  3. Expose normalized API to explore all data in the server (allowing others to plug into our system, and to continue our work)
- 4. Expose a subset of the full API to the web, Android and iOS clients.
- 
+3. App Web Server
+ 1. Will expose only a subset of the full API of the Raw data server, and will get actual data by the API exposed from the Raw data server
+ 2. Will hold the JS Client
 
-## Web Server instalation 
+
+## App Web Server instalation 
 
  - Install MongoDB 
  - Start MongoDB
@@ -41,4 +43,4 @@ This repository holds the entire Open Grocerty (codenamed EfoZol) project. It in
 The code is now running the server at `http://localhost:3000`
 Frontend stuff is at `./public`
 
-The project runs AngularJS on the MEAN stack + PostgreSql. 
+The project runs AngularJS on the MEAN stack. 
