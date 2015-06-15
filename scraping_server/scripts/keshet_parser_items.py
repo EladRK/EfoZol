@@ -4,9 +4,6 @@ import sys
 import json
 
 field_translator = {
-    "ManufacturerName": "ManufactureName",
-    "ManufacturerItemDescription": "ManufactureItemDescription",
-    "bIsWeighted": "blsWeighted",
 }
 
 
@@ -17,13 +14,8 @@ def item_text(item,field):
     if ret is None: return 'MISSING'
     return ret
 
-def parse_items_file(stores_fobj, out_fobj):
-    # Start by converting to UTF-8 + replacing ampersands
-    bad_encoded = stores_fobj.read()
-    bad_encoded = bad_encoded.replace("&", "&amp;")
-    utf_encoded = bad_encoded.decode('windows-1255').encode('utf-8')
-    
-    dom = ET.parse(StringIO(utf_encoded))
+def parse_items_file(stores_fobj, out_fobj):  
+    dom = ET.parse(stores_fobj)
     root = dom.getroot() # If only it would be this simple on an iPhone
 
     outputdict = {'root': dict()}
