@@ -3,8 +3,9 @@ var router = express.Router();
 
 
 var Promise = require("bluebird");
-var mongoose = Promise.promisifyAll(require('mongoose'));
-var Product = require("../models/Product.js");
+
+// var mongoose = Promise.promisifyAll(require('mongoose'));
+// var Product = require("../models/Product.js");
 
 
 //var Sequelize = require('sequelize');
@@ -18,7 +19,7 @@ var conString = "pg://postgres:1234@localhost:5432/efozol2";
 var client = new pg.Client(conString);
 client.connect();
  
-mongoose.connect('mongodb://localhost:27017/efozol1');
+//mongoose.connect('mongodb://localhost:27017/efozol1');
 
 router.get('/products/', function(req, res, next) {
 
