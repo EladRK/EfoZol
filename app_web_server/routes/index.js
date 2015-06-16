@@ -53,8 +53,8 @@ router.get('/products/', function(req, res, next) {
 
 router.get('/products/:name', function(req, res, next) {
 
-  //var query = client.query("SELECT * FROM \"Products\" LIKE '%%' ORDER BY \"Name\"");
-  var query = client.query("SELECT * FROM \"Products\" ORDER BY \"Name\"");
+  var query = client.query("SELECT * FROM \"Products\" WHERE \"Name\" LIKE '%" + req.params.name + "%' ORDER BY \"Name\"");
+  //var query = client.query("SELECT * FROM \"Products\" ORDER BY \"Name\"");
   query.on("row", function (row, result) {
     result.addRow(row);
   });
@@ -64,7 +64,7 @@ router.get('/products/:name', function(req, res, next) {
       return item.Name;
     });
     
-    console.log(JSON.stringify(items, null, "    "));
+    //console.log(JSON.stringify(items, null, "    "));
 
     res.json(items);
   });
