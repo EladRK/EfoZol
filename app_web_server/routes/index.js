@@ -58,9 +58,14 @@ router.get('/products/:name', function(req, res, next) {
     result.addRow(row);
   });
   query.on("end", function (result) {
-    console.log(JSON.stringify(result.rows, null, "    "));
+    
+    var items = result.rows.map(function(item){
+      return item.Name;
+    });
+    
+    console.log(JSON.stringify(items, null, "    "));
 
-    res.json(result.rows);
+    res.json(items);
   });
 
 

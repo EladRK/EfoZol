@@ -1,19 +1,18 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/bin/npm', 'i' ]
+1 verbose cli [ 'node', '/usr/bin/npm', 'start' ]
 2 info using npm@1.3.6
 3 info using node@v0.10.36
-4 error install Couldn't read dependencies
-5 error Error: ENOENT, open '/home/ekatz/dev/EfoZol/package.json'
-6 error If you need help, you may report this log at:
-6 error     <http://github.com/isaacs/npm/issues>
-6 error or email it to:
-6 error     <npm-@googlegroups.com>
-7 error System Linux 4.0.4-303.fc22.x86_64
-8 error command "node" "/usr/bin/npm" "i"
-9 error cwd /home/ekatz/dev/EfoZol
-10 error node -v v0.10.36
-11 error npm -v 1.3.6
-12 error path /home/ekatz/dev/EfoZol/package.json
-13 error code ENOENT
-14 error errno 34
-15 verbose exit [ 34, true ]
+4 error Error: ENOENT, open '/home/ekatz/dev/EfoZol/package.json'
+5 error If you need help, you may report this log at:
+5 error     <http://github.com/isaacs/npm/issues>
+5 error or email it to:
+5 error     <npm-@googlegroups.com>
+6 error System Linux 4.0.4-303.fc22.x86_64
+7 error command "node" "/usr/bin/npm" "start"
+8 error cwd /home/ekatz/dev/EfoZol
+9 error node -v v0.10.36
+10 error npm -v 1.3.6
+11 error path /home/ekatz/dev/EfoZol/package.json
+12 error code ENOENT
+13 error errno 34
+14 verbose exit [ 34, true ]
