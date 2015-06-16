@@ -14,7 +14,7 @@ var Product = require("../models/Product.js");
 
 
 var pg = require("pg")
-var conString = "pg://postgres:1234@localhost:5432/efozol";
+var conString = "pg://postgres:1234@localhost:5432/efozol2";
 var client = new pg.Client(conString);
 client.connect();
  
@@ -39,9 +39,12 @@ router.get('/products/', function(req, res, next) {
   });
   query.on("end", function (result) {
     console.log(JSON.stringify(result.rows, null, "    "));
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.write(JSON.stringify(result.rows) + "\n");
-    res.end();
+
+    res.json(result.rows);
+
+    // res.writeHead(200, {'Content-Type': 'text/plain'});
+    // res.write(JSON.stringify(result.rows) + "\n");
+    // res.end();
   });
   
 });
@@ -49,12 +52,24 @@ router.get('/products/', function(req, res, next) {
 
 router.get('/products/:name', function(req, res, next) {
 
-  var search = req.params.name;
-  var regex = new RegExp('.*'+search+'.*');
-
-  Product.distinct('name', {name: regex}).then(function(docs){
-    res.json(docs);
+  //var query = client.query("SELECT * FROM \"Products\" LIKE '%%' ORDER BY \"Name\"");
+  var query = client.query("SELECT * FROM \"Products\" ORDER BY \"Name\"");
+  query.on("row", function (row, result) {
+    result.addRow(row);
   });
+  query.on("end", function (result) {
+    console.log(JSON.stringify(result.rows, null, "    "));
+
+    res.json(result.rows);
+  });
+
+
+//   var search = req.params.name;
+//   var regex = new RegExp('.*'+search+'.*');
+// 
+//   Product.distinct('name', {name: regex}).then(function(docs){
+//     res.json(docs);
+//   });
   
 });
 
