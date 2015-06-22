@@ -1,6 +1,6 @@
 
 
-<div style='direction:rtl; margin:20px;' >
+<div style='direction:rtl; margin:50px;' >
 
 
 
@@ -31,6 +31,28 @@
     
   </div>
   <div class='col-md-6'>
+    
+         <md-autocomplete
+          ng-disabled="isDisabled"
+          md-no-cache="noCache"
+          md-search-text-change="searchTextChange(searchText)"
+          md-selected-item="selectedItem"
+          md-search-text="searchText"
+          md-selected-item-change="selectedItemChange(item)"
+          md-items="item in querySearch(searchText)"
+          md-item-text="item.display"
+          md-min-length="0"
+          placeholder="איזה מוצר ברצונך לקנות?">
+        <md-item-template>
+          <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+          המוצר "{{searchText}}" לא נמצא.
+        </md-not-found>
+      </md-autocomplete>
+      
+    
+    
     <input type="text" ng-model="newName" ng-keyup="getProducts(newName)" class='input-block-level'/>
 
     {{newProductName}}

@@ -7,7 +7,7 @@
 5 error     <http://github.com/isaacs/npm/issues>
 5 error or email it to:
 5 error     <npm-@googlegroups.com>
-6 error System Linux 4.0.4-303.fc22.x86_64
+6 error System Linux 4.0.5-300.fc22.x86_64
 7 error command "node" "/usr/bin/npm" "start"
 8 error cwd /home/ekatz/dev/EfoZol
 9 error node -v v0.10.36
