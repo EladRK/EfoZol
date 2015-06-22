@@ -86,7 +86,7 @@ function ListCtrl($scope, $http, $timeout, $q, $log) {
 ////////////////////////////////////////////////////////////
 
     var self = this;
-    $scope.simulateQuery = false;
+    $scope.simulateQuery = true;
     $scope.isDisabled    = false;
     // list of `state` value/display objects
     $scope.states        = loadAll();
@@ -101,9 +101,25 @@ function ListCtrl($scope, $http, $timeout, $q, $log) {
      * remote dataservice call.
      */
     function querySearch (query) {
+
+    // if (name === '') {
+    //   $scope.search = [];
+    //   return;
+    // }
+    
+    // var p = $http.get('/products/' + name).
+    // then(function(res) {
+    //   if(p === lastSearch){
+    //     $scope.search = res.data;
+    //   }
+    // })["catch"](function(err){
+    //   alert("Error making request", err);
+    //   console.log(err);
+    // });
+    // lastSearch = p;
+
       
-      console.log(query);
-      
+
       var results = query ? $scope.states.filter( createFilterFor(query) ) : self.states,
           deferred;
       if (self.simulateQuery) {
@@ -124,13 +140,14 @@ function ListCtrl($scope, $http, $timeout, $q, $log) {
      * Build `states` list of key/value pairs
      */
     function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
+      var allStates = 'תפוח, תמר, אגוז, חלב, גבינה, ביצים, ביצים אורגניות, תפוזים, חומוס, פיתה, לחם, לחם אחיד, לחם שיפון';
+      // var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+      //         Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+      //         Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+      //         Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+      //         North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+      //         South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+      //         Wisconsin, Wyoming';
       return allStates.split(/, +/g).map( function (state) {
         return {
           value: state.toLowerCase(),

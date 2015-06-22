@@ -5,13 +5,15 @@ var router = express.Router();
 var Promise = require("bluebird");
 
 
+ 
+router.get('/products/', function(req, res, next) {
+
 var pg = require("pg")
 var conString = "pg://postgres:1234@localhost:5432/efozol2";
 var client = new pg.Client(conString);
 
 client.connect();
- 
-router.get('/products/', function(req, res, next) {
+
 
   var query = client.query("SELECT * FROM \"Products\" ORDER BY \"Name\"");
   query.on("row", function (row, result) {
@@ -28,6 +30,13 @@ router.get('/products/', function(req, res, next) {
 
 
 router.get('/products/:name', function(req, res, next) {
+
+var pg = require("pg")
+var conString = "pg://postgres:1234@localhost:5432/efozol2";
+var client = new pg.Client(conString);
+
+client.connect();
+
 
   var query = client.query("SELECT * FROM \"Products\" WHERE \"Name\" LIKE $1 ORDER BY \"Name\"", ['%' +req.params.name + '%']);
 
