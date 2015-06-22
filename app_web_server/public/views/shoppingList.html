@@ -13,7 +13,8 @@
         {{b.totalPrice}}
         </div>
       
-
+    <md-slider flex min="0" max="255" ng-model="color.red" aria-label="red" id="red-slider" class>
+      </md-slider>
       
 <map zoom="14" style="height:500px;" center="[32.0853000,34.7817680]"  
 	dragging-cursor="move" + tilt="45"
@@ -24,14 +25,6 @@
         <info-window id="marker-info">
           <h4>Hi!</h4>
         </info-window>
-
-	 
-	 <!--<info-window id="1" position="32.0853000,34.7817680" visible="true">
-          <div ng-non-bindable="">
-			  <br />
-תל אביב, ישראל 
-          </div>
-        </info-window>-->
 
 	 </map>
 	 

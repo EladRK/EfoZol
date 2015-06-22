@@ -7,26 +7,26 @@ function ListCtrl($scope, $http) {
 
   var lastSearch = null;
   $scope.getProducts = function getProducts(name){
-  
+    
     if (name === '') {
       $scope.search = [];
       return;
     }
     
     var p = $http.get('/products/' + name).
-      then(function(res) {
-        if(p === lastSearch){
-          $scope.search = res.data;
-        }
-      })["catch"](function(err){
-        alert("Error making request", err);
-        console.log(err);
-      });
+    then(function(res) {
+      if(p === lastSearch){
+        $scope.search = res.data;
+      }
+    })["catch"](function(err){
+      alert("Error making request", err);
+      console.log(err);
+    });
     lastSearch = p;
   };
   
   $scope.addProduct = function (productName) {
-  
+    
     var p = $scope.products.filter(function(prod){
       return productName === prod.name;
     })[0];
@@ -40,6 +40,8 @@ function ListCtrl($scope, $http) {
     } else {
       p.quantity++;
     }
+
+    console.log(p);
   };
 
   $scope.incQuantity = function(product){
@@ -56,20 +58,20 @@ function ListCtrl($scope, $http) {
   };
   
   $scope.getBranches = function(){
-      
+    
     $http.get('/branches').
-      then(function(res) {
-          $scope.branches = res.data;
-      })["catch"](function(err){
-        alert("Error making request", err);
-        console.log(err);
-      });
+    then(function(res) {
+      $scope.branches = res.data;
+    })["catch"](function(err){
+      alert("Error making request", err);
+      console.log(err);
+    });
   };
   
-    $scope.showResults = function()
+  $scope.showResults = function()
   {
-  $scope.getBranches();   
-  }
- 				
+    $scope.getBranches();   
+  };
+  
 
 }
