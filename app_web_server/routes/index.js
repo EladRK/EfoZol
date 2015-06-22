@@ -29,8 +29,7 @@ router.get('/products/', function(req, res, next) {
 
 router.get('/products/:name', function(req, res, next) {
 
-  //var query = client.query("SELECT * FROM \"Products\" WHERE \"Name\" LIKE '%$1%' ORDER BY \"Name\"", [req.params.name]);
-  var query = client.query("SELECT * FROM \"Products\" WHERE \"Name\" LIKE '%"+ req.params.name +"%' ORDER BY \"Name\"");
+  var query = client.query("SELECT * FROM \"Products\" WHERE \"Name\" LIKE $1 ORDER BY \"Name\"", ['%' +req.params.name + '%']);
 
   query.on("row", function (row, result) {
     result.addRow(row);
