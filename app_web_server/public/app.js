@@ -1,4 +1,4 @@
-angular.module('app',['ngRoute', 'ngMap'])
+angular.module('app',['ngRoute', 'ngMap', 'ngMaterial'])
     .config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
