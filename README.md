@@ -31,8 +31,8 @@ This repository holds the entire Open Grocerty (codenamed EfoZol) project. It in
 
 ## Web Server instalation 
 
- - Install MongoDB 
- - Start MongoDB
+ - Install PostgreSql 
+ - Restore DB (found in app_web_server/sql)
  - Run `cd app_web_server`
  - Run `npm install`
  - Run `node bootstrap.js` (fills up data in Mongo)
