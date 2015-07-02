@@ -1,0 +1,28 @@
+{
+  "name": "EfoZol",
+  "version": "0.0.0",
+  "homepage": "https://github.com/EladRK/EfoZol",
+  "authors": [
+    "eladrk <eladkt@gmail.com>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "bootswatch-dist": "3.3.4-paper",
+    "angular-route": "~1.4.0"
+  },
+  "bootswatch-dist": {
+    "main": [
+      "css/bootstrap.css"
+    ]
+  },
+  "resolutions": {
+    "angular": "~1.4.0"
+  }
+}
