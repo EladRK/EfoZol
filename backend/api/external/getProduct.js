@@ -19,4 +19,4 @@ module.exports.do = function(req, res, next) {
     res.json(items);
   });
   
-});
+};

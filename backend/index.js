@@ -12,22 +12,9 @@ var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var app          = express();
+var http         = require('http');
 var router       = express.Router();
-
-/**
- * Create HTTP server.
- */
-
-app.set('port', 80);
-var server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(80);
-server.on('error', onError);
-server.on('listening', onListening);
+var routes       = require('./routes.js').routes;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,10 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /**
 * Routing controllers sets.
 **/
-
-router.get("/api/external/branches", require("./api/external/getBranches.js").do)
-router.get("/api/external/products/:name", require("./api/external/product/getProduct.js").do)
-router.get("/api/external/products", require("./api/external/product/getProducts.js").do)
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -74,3 +58,12 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
+/**
+ * Create HTTP server.
+ */
+
+app.set('port', 5000);
+var server = http.createServer(app);
+server.listen(5000);
