@@ -1,0 +1,84 @@
+
+
+<div style='direction:rtl; margin:50px;' >
+
+
+
+  <div class='row'>
+    <div class='col-md-6'>
+            <input type='button' value='איפה הכי זול?' ng-click="showResults()" >
+
+      <div ng-repeat="b in branches">
+        {{b.name}}
+        {{b.totalPrice}}
+        </div>
+      
+    <md-slider flex min="0" max="255" ng-model="color.red" aria-label="red" id="red-slider" class>
+      </md-slider>
+      
+<map zoom="14" style="height:500px;" center="[32.0853000,34.7817680]"  
+	dragging-cursor="move" + tilt="45"
+	 map-type-id="TERRAIN">
+	 
+<marker ng-repeat="b in branches" position="{{b.pos}}" on-click="showInfoWindow(event, 'marker-info')"></marker>
+
+        <info-window id="marker-info">
+          <h4>Hi!</h4>
+        </info-window>
+
+	 </map>
+	 
+    
+  </div>
+  <div class='col-md-6'>
+    
+         <md-autocomplete
+          ng-disabled="isDisabled"
+          md-no-cache="noCache"
+          md-search-text-change="searchTextChange(searchText)"
+          md-selected-item="selectedItem"
+          md-search-text="searchText"
+          md-selected-item-change="selectedItemChange(item)"
+          md-items="item in querySearch(searchText)"
+          md-item-text="item.display"
+          md-min-length="0"
+          placeholder="איזה מוצר ברצונך לקנות?"
+          >
+        <md-item-template>
+          <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+          המוצר "{{searchText}}" לא נמצא.
+        </md-not-found>
+      </md-autocomplete>
+      
+    
+    
+    <input type="text" ng-model="newName" disabled="disabled" ng-keyup="getProducts(newName)" class='input-block-level'/>
+
+    {{newProductName}}
+    <div>
+      <div ng-repeat="product in search">
+        <a ng-click="addProduct(product)" style='cursor:pointer;'>
+          {{product}}
+        </a>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <tr ng-repeat="product in products track by product.name">
+        <td>
+          <button ng-click='incQuantity(product)'>+</button>
+          {{product.quantity}}
+          <button ng-click='decQuantity(product)'>-</button>
+
+        </td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+</div>
