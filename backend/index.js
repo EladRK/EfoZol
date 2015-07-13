@@ -14,6 +14,21 @@ var bodyParser   = require('body-parser');
 var app          = express();
 var router       = express.Router();
 
+/**
+ * Create HTTP server.
+ */
+
+app.set('port', 80);
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(80);
+server.on('error', onError);
+server.on('listening', onListening);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
