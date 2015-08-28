@@ -32,13 +32,12 @@ This repository holds the entire Open Grocerty (codenamed EfoZol) project. It in
 ## Web Server instalation 
 
  - Install PostgreSql 
- - Restore DB (found in app_web_server/sql)
- - Run `cd app_web_server`
+ - Restore DB (found in backend/sql)
+ - Run `cd backend`
  - Run `npm install`
- - Run `node bootstrap.js` (fills up data in Mongo)
  - Run `npm start` - starts the server
 
 The code is now running the server at `http://localhost:3000`
-Frontend stuff is at `./public`
+Frontend stuff is at `/frontend`
 
 The project runs AngularJS on the MEAN stack + PostgreSql. 

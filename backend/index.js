@@ -16,9 +16,7 @@ var http         = require('http');
 var router       = express.Router();
 var routes       = require('./routes.js').routes;
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+console.info("Booting up...");
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -28,11 +26,19 @@ app.use(bodyParser.urlencoded({
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+console.info("Setting up public folder...");
 
 /**
 * Routing controllers sets.
 **/
-app.use('/', routes);
+app.use("/", function(req, res, next){
+  res.json({
+    "error": 404,
+    "message": "Can't access to / endpoint."
+  });
+});
+app.use(routes);
+console.info("Setting up routes handler...");
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,27 +49,24 @@ app.use(function(req, res, next) {
 
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
+    var err = new Error('Not Found');
+    err.status = 400;
+    next(err);
   });
 }
 
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+  if(err) {
+    var err = new Error('Server error');
+    err.status = 500;
+    next(err);
+  }
 });
-
+console.info("Setting up error handlers...");
 
 /**
  * Create HTTP server.
  */
-
-app.set('port', 5000);
-var server = http.createServer(app);
-server.listen(5000);
+app.set('port', 3000);
+http.createServer(app).listen(3000);
+console.info("Server Running...");
